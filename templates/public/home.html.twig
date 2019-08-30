@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Conducteurs</th>
+                <td>{{ drivers|length }}</td>
+            </tr>
+            <tr>
+                <th>Vehicules</th>
+                <td>{{ vehicles|length }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ rentals|length }}</td>
+            </tr>
+            <tr>
+                <th>Véhicules non louées</th>
+                <td colspan="3">
+                    {% if vehicleNotRented > 0 %}
+                        {{ vehicleNotRented }}
+                    {% else %}
+                        Tous les véhicules sont loués
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    {% include 'public/partials/_caroussel.html.twig' %}
+
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}

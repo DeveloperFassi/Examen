@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Rental{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle location</h1>
+
+    {{ include('rental/_form.html.twig') }}
+
+    <a class="btn btn-primary btn-sm" href="{{ path('rental_index') }}">Retour à la liste</a>
+{% endblock %}

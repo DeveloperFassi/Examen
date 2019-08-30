@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rental index{% endblock %}
+
+{% block body %}
+    <h1>Rental index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#Id</th>
+                <th>Nom et Prénom Conducteur</th>
+                <th>Marque et Modèle Voiture</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rental in rentals %}
+            <tr>
+                <td>{{ rental.id }}</td>
+                <td><a href="{{ path('driver_show', {'id': rental.driver.id}) }}">{{ rental.driver.lastname }} {{ rental.driver.firstname }}</a></td>
+                <td><a href="{{ path('vehicle_show', {'id': rental.vehicle.id}) }}">{{ rental.vehicle.brand }} {{ rental.vehicle.model }}</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Aucune location trouver</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary btn-sm" href="{{ path('rental_new') }}">Créer une nouvelle location</a>
+{% endblock %}

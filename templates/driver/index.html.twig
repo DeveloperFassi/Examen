@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Driver List{% endblock %}
+
+{% block body %}
+    <h1>Liste des conducteurs</h1>
+
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>#Id</th>
+                <th>Téléphone</th>
+                <th>Nom et prénom</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for driver in drivers %}
+                <tr>
+                    <td>{{ driver.id }}</td>
+                    <td><a href="{{ path('driver_show', {'id': driver.id}) }}">
+                            {{ driver.phoneNumber }}</a></td>
+                    <td>{{ driver.lastname }} {{ driver.firstname }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun conducteur inscrit pour le moment</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary btn-sm" href="{{ path('driver_new') }}">Créer un conducteur</a>
+{% endblock %}

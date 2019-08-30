@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vehicle List{% endblock %}
+
+{% block body %}
+    <h1>Liste des véhicules</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#Id</th>
+                <th>Immatriculation</th>
+                <th>Model et Marque</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vehicle in vehicles %}
+            <tr>
+                <td>{{ vehicle.id }}</td>
+                <td><a href="{{ path('vehicle_show', {'id': vehicle.id}) }}">{{ vehicle.immatriculation }}</a></td>
+                <td>{{ vehicle.model }} {{ vehicle.brand }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun véhicule trouver</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary btn-sm" href="{{ path('vehicle_new') }}">Créer un véhicule</a>
+{% endblock %}
